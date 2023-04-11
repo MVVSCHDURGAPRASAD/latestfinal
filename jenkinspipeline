@@ -1,25 +1,39 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('checkout') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building...'
+                // Add build steps here
             }
         }
-      stage ('build')
-  {
-      steps
-  {
-  echo 'hi there'
-  }
-  }
-  stage ('deploy')
-  {
-        steps
-  {
-  echo 'hi hello'
-  }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                // Add test steps here
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Add deployment steps here
+            }
+        }
     }
+    
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+            // Add actions to be taken on successful completion
+        }
+        failure {
+            echo 'Pipeline failed!'
+            // Add actions to be taken on failure
+        }
+        always {
+            echo 'Pipeline completed.'
+            // Add actions to be taken always, regardless of success or failure
+        }
     }
-  }
+}
